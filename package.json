@@ -1,0 +1,19 @@
+{
+  "name": "StaffingSystem",
+  "version": "1.0.0",
+  "description": "Staffing System",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/honingwon/StaffingSystem",
+  "keywords": [
+    "Electron",
+    "StaffingSystem"
+  ],
+  "author": "wanghongyuan",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.4.1"
+  }
+}
