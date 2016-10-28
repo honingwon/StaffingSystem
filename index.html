@@ -2,19 +2,44 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>EMS</title>
+    <title>Staffing System</title>
   </head>
   <body>
-    <h1>EMS</h1>
+    <h1>Staffing System</h1>
+    <form>
+      <fieldset>
+        <legend>Info</legend>
+        <label for="NO">NO.</label>
+        <input type="input" name="NO" id="NO" />
+      </fieldset>
+       <fieldset>
+        <legend>Sex</legend> 
+        <label for="male">Male</label>
+        <input type="radio" name="sex" id="male" checked="checked" />
+        <label for="female">Female</label>
+        <input type="radio" name="sex" id="female" />
+      </fieldset>
+      <fieldset>
+        <legend>Hobby</legend>
+        <label for="swim">Swim</label>
+        <input type="radio" name="hobby" id="swim"/>
+        <label for="table-tennis">Table Tennis</label>
+        <input type="radio" name="hobby" id="table-tennis" />
+         <label for="others">Others</label>
+        <input type="radio" name="hobby" id="others" checked="checked" />
+      </fieldset>
+      <p><input type="submit" name="submit" value="Submit" data-submit="submit"></p>
+    </form>
     <!-- All of the Node.js APIs are available in this renderer process. -->
+    <!--
     We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
+    -->
   </body>
 
   <script>
     // You can also require other files to run in this process
-    require('./renderer.js')
-    require('./renderer.js')
+    require('./renderer.js');
   </script>
 </html>

@@ -15,5 +15,8 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^1.4.1"
+  },
+  "dependencies": {
+    "xlsx": "^0.8.0"
   }
 }
