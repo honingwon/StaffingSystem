@@ -26,7 +26,7 @@ function saveXLSX() {
   wb.Sheets[ws_name] = ws;
 
   /* write file */
-  XLSX.writeFile(wb, 'd://test.xlsx');
+  XLSX.writeFile(wb, 'test.xlsx');
 }
 
 function datenum(v, date1904) {
