@@ -8,34 +8,48 @@
     <h1>Staffing System</h1>
     <form>
       <fieldset>
-        <legend>Info</legend>
+        <legend>请输入报告号</legend>
         <label for="NO">NO.</label>
         <input type="input" name="NO" id="NO" />
       </fieldset>
        <fieldset>
-        <legend>Sex</legend> 
-        <label for="male">Male</label>
-        <input type="radio" name="sex" id="male" checked="checked" />
-        <label for="female">Female</label>
-        <input type="radio" name="sex" id="female" />
+        <legend>请选择员工</legend> 
+        <input type="radio" name="staff" id="staff1"T checked="checked" />
+        <label for="staff1">staff1</label>
+        <input type="radio" name="staff" id="staff2" />
+        <label for="staff2">staff2</label>
+        <input type="radio" name="staff" id="staff3" />
+        <label for="staff3">staff3</label>
+        <input type="radio" name="staff" id="staff4" />
+        <label for="staff4">staff4</label>
       </fieldset>
       <fieldset>
-        <legend>Hobby</legend>
-        <label for="swim">Swim</label>
-        <input type="radio" name="hobby" id="swim"/>
-        <label for="table-tennis">Table Tennis</label>
-        <input type="radio" name="hobby" id="table-tennis" />
-         <label for="others">Others</label>
-        <input type="radio" name="hobby" id="others" checked="checked" />
+        <legend>请选择错误类型</legend>
+        <input type="radio" name="wrong" id="wrong1"/>
+        <label for="wrong1">wrong1</label>
+        <input type="radio" name="wrong" id="wrong2" checked="checked" />
+        <label for="wrong2">wrong2</label>
       </fieldset>
-      <p><input type="submit" name="submit" value="Submit" data-submit="submit"></p>
+      <fieldset>
+        <legend>请确认选择并打分</legend>
+        <p>报告号:000</p>
+        <p>员工:staff1</p>
+        <p>错误类型:wrong1</p>
+        <p>
+          <input type="button" name="yes" value="满意" data-button="ok">
+          <input type="button" name="no" value="不满意" data-button="no">
+        </p>
+      </fieldset>
     </form>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    <!--
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-    -->
+    <h3>当前操作会记录到文件A-B-020022.xlsx</h3>
+    <h3>当前操作历史</h3>
+    <ol>
+      <li>记录1</li>
+      <li>记录2</li>
+    </ol>
+    
+
+
   </body>
 
   <script>
