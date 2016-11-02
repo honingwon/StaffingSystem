@@ -12,9 +12,9 @@
         <label for="NO">NO.</label>
         <input type="input" name="NO" id="NO" />
       </fieldset>
-       <fieldset>
+       <fieldset id='staffset'>
         <legend>请选择员工</legend> 
-        <input type="radio" name="staff" id="staff1"T checked="checked" />
+        <input type="radio" name="staff" id="staff1" />
         <label for="staff1">staff1</label>
         <input type="radio" name="staff" id="staff2" />
         <label for="staff2">staff2</label>
@@ -23,18 +23,18 @@
         <input type="radio" name="staff" id="staff4" />
         <label for="staff4">staff4</label>
       </fieldset>
-      <fieldset>
+      <fieldset id='wrongset'>
         <legend>请选择错误类型</legend>
         <input type="radio" name="wrong" id="wrong1"/>
         <label for="wrong1">wrong1</label>
-        <input type="radio" name="wrong" id="wrong2" checked="checked" />
+        <input type="radio" name="wrong" id="wrong2" />
         <label for="wrong2">wrong2</label>
       </fieldset>
       <fieldset>
         <legend>请确认选择并打分</legend>
-        <p>报告号:000</p>
-        <p>员工:staff1</p>
-        <p>错误类型:wrong1</p>
+        <p>报告号:<span id='notxt'></span></p>
+        <p>员工:<span id='stafftxt'></span></p>
+        <p>错误类型:<span id='wrongtxt'></span></p>
         <p>
           <input type="button" name="yes" value="满意" data-button="ok">
           <input type="button" name="no" value="不满意" data-button="no">
