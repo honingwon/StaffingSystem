@@ -3,14 +3,22 @@
   <head>
     <meta charset="UTF-8">
     <title>Staffing System</title>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet">
   </head>
   <body>
     <h1>Staffing System</h1>
     <form>
-      <fieldset>
+      <fieldset id='noset'>
         <legend>请输入报告号</legend>
         <label for="NO">NO.</label>
         <input type="input" name="NO" id="NO" />
+      </fieldset>
+      <fieldset id='dateset'>
+        <legend>请选择日期</legend>        
+        <label for="datefrom">date from</label>
+        <input type="input" name="datefrom" id="datefrom">
+        <label for="dateto">date to</label>
+        <input type="input" name="dateto" id="dateto">      
       </fieldset>
        <fieldset id='staffset'>
         <legend>请选择员工</legend> 
@@ -33,6 +41,8 @@
       <fieldset>
         <legend>请确认选择并打分</legend>
         <p>报告号:<span id='notxt'></span></p>
+        <p>date from:<span id='fromtxt'></span></p>
+        <p>date to:<span id='totxt'></span></p>
         <p>员工:<span id='stafftxt'></span></p>
         <p>错误类型:<span id='wrongtxt'></span></p>
         <p>
@@ -41,19 +51,14 @@
         </p>
       </fieldset>
     </form>
-    <h3>当前操作会记录到文件A-B-020022.xlsx</h3>
+    <h3>当前操作会记录到文件>>>>  <span id='file'></span>.xlsx</h3>
     <h3>当前操作历史</h3>
-    <ol>
-      <li>记录1</li>
-      <li>记录2</li>
-    </ol>
-    
-
-
+    <ol id='list'></ol>
   </body>
-
   <script>
     // You can also require other files to run in this process
+    window.$ = window.jQuery = require('./assets/jquery.js');
+    require('./assets/jquery-ui.js');
     require('./renderer.js');
   </script>
 </html>

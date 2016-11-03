@@ -1,8 +1,8 @@
 var XLSX = require('XLSX');
 
-function saveXLSX() {
-  /* original data */
-  var data = [[1,2,3],[true, false, null, "sheetjs"],["foo","bar",new Date("2014-02-19T14:30Z"), "0.3"], ["baz", null, "qux"]]
+function saveXLSX(timeStr, data) {
+  // /* original data */
+  // var data = [[1,2,3],[true, false, null, "sheetjs"],["foo","bar",new Date("2014-02-19T14:30Z"), "0.3"], ["baz", null, "qux"]]
   var ws_name = "SheetJS";
 
   var wb = new Workbook(), ws = sheet_from_array_of_arrays(data);
@@ -12,7 +12,7 @@ function saveXLSX() {
   wb.Sheets[ws_name] = ws;
 
   /* write file */
-  XLSX.writeFile(wb, 'test.xlsx');
+  XLSX.writeFile(wb, timeStr + '.xlsx');
 }
 
 function datenum(v, date1904) {
