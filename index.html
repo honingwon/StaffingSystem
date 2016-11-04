@@ -39,7 +39,7 @@
         <label for="wrong2">wrong2</label>
       </fieldset>
       <fieldset>
-        <legend>请确认选择并打分</legend>
+        <legend>请确认选择并打分</legend>        
         <p>报告号:<span id='notxt'></span></p>
         <p>date from:<span id='fromtxt'></span></p>
         <p>date to:<span id='totxt'></span></p>
@@ -50,7 +50,14 @@
           <input type="button" name="no" value="不满意" data-button="no">
         </p>
       </fieldset>
-    </form>
+      <fieldset>
+        <legend>总评</legend>        
+        <p>staff1满意度:<span id='staff1result'></span></p>
+        <p>staff2满意度:<span id='staff2result'></span></p>
+        <p>staff3满意度:<span id='staff3result'></span></p>
+        <p>staff4满意度:<span id='staff4result'></span></p>
+      </fieldset>
+    </form>    
     <h3>当前操作会记录到文件>>>>  <span id='file'></span>.xlsx</h3>
     <h3>当前操作历史</h3>
     <ol id='list'></ol>

@@ -1,9 +1,7 @@
 var saveXLSX = require('./xlsxsaver').saveXLSX;
-var timeStr =new Date().getTime();
-$('#file').text('file' + timeStr);
-
-$( "#datefrom" ).datepicker();
-$( "#dateto" ).datepicker();
+var readFiles = require('./xlsxreader').readFiles;
+var timeStr =parseInt(new Date().getTime()/1000);
+var path = './files/';
 
 var staffset = $('#staffset');
 var wrongset = $('#wrongset');
@@ -12,6 +10,33 @@ var dateset = $('#dateset');
 
 var records = [];
 records.push(getHead());
+
+$( "#datefrom" ).datepicker();
+$( "#dateto" ).datepicker();
+$('input',dateset).on('change', updatePreview);
+
+readFiles(path, readFilesCallback);
+
+function readFilesCallback(result) {
+  console.log(JSON.stringify(result));
+  updateAllRecordView(result);
+}
+
+function updateAllRecordView (result) {
+  for (var i = 4; i >= 1; i--) {
+    var item = result['staff'+i];
+    if(item) {
+      $('#staff'+i+'result').text(getStaffResultTxt(item));
+    }
+  }
+}
+
+function getStaffResultTxt(result) {
+  // return JSON.stringify(result)
+  var str = (result.yes / result.count) * 100 + '%';
+  str += '('+result.yes+'/'+result.count+')';
+  return str;
+}
 
 document.body.addEventListener('click', function (event) {
   if (event.target.dataset.button === 'ok') {
@@ -27,12 +52,11 @@ document.body.addEventListener('click', function (event) {
   }
 })
 
-$('input',dateset).on('change', updatePreview);
-
 function addRecord(yes) {
   $('#list').append(getLi(yes, getstaff().id, getwrong().id));
   records.push(getRow(yes));  
-  saveXLSX('file' + timeStr, records);
+  saveXLSX( getfilename(), records);
+  readFiles(path, readFilesCallback);
 }
 
 function getHead() {
@@ -43,7 +67,6 @@ function getRow( yes) {
   var yesStr = yes == 1 ? '满意' : '不满意';
   return [getNumber(),getfrom(),getto(),getstaff().id,getwrong().id,yesStr];
 }
-
 
 function getLi(yes, staff, wrong ) {
   var yesStr = yes == 1 ? '满意' : '不满意';
@@ -57,11 +80,17 @@ function getLi(yes, staff, wrong ) {
 }
 
 function updatePreview (){
+  $('#file').text(getfilename());
   $('#stafftxt').text(getstaff() ? getstaff().id : '未选择');
   $('#wrongtxt').text(getwrong() ? getwrong().id : '未选择');
   $('#notxt').text(getNumber());
   $('#fromtxt').text(getfrom());
   $('#totxt').text(getto());
+}
+
+function getfilename() {
+  var reg = /\//g;
+ return 'file' + getfrom().replace(reg,'') + '-'+ getto().replace(reg,'') +'-'+timeStr;
 }
 
 function reset (){
