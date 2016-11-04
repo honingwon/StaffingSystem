@@ -33,7 +33,7 @@ function updateAllRecordView (result) {
 
 function getStaffResultTxt(result) {
   // return JSON.stringify(result)
-  var str = (result.yes / result.count) * 100 + '%';
+  var str = parseInt((result.yes / result.count) * 100) + '%';
   str += '('+result.yes+'/'+result.count+')';
   return str;
 }
