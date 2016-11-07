@@ -47,7 +47,9 @@ document.body.addEventListener('click', function (event) {
     if(validate()) {
       no(event);
     }
-  } else if(event.target.nodeName == 'INPUT' || event.target.nodeName == 'LABEL') {
+  } else if(event.target.dataset.button === 'clear') {
+  	clear(event);
+  }  else if(event.target.nodeName == 'INPUT' || event.target.nodeName == 'LABEL') {
     updatePreview();
   }
 })
@@ -81,11 +83,11 @@ function getLi(yes, staff, wrong ) {
 
 function updatePreview (){
   $('#file').text(getfilename());
-  $('#stafftxt').text(getstaff() ? getstaff().id : '未选择');
-  $('#wrongtxt').text(getwrong() ? getwrong().id : '未选择');
-  $('#notxt').text(getNumber());
-  $('#fromtxt').text(getfrom());
-  $('#totxt').text(getto());
+  // $('#stafftxt').text(getstaff() ? getstaff().id : '未选择');
+  // $('#wrongtxt').text(getwrong() ? getwrong().id : '未选择');
+  // $('#notxt').text(getNumber());
+  // $('#fromtxt').text(getfrom());
+  // $('#totxt').text(getto());
 }
 
 function getfilename() {
@@ -116,13 +118,14 @@ function getNumber() {
 }
 
 function getwrong() {
-  return $('input:checked',wrongset)[0];
+  var element = $('input:checked',wrongset)[0]
+  return element ? element : {};
 }
 
 function validate() {
-  var ok = getstaff() !== undefined && getwrong() !== undefined;
+  var ok = getstaff() !== undefined;
   if(!ok) {
-    alert('员工或错误类型未选择');
+    alert('员工类型未选择');
   }
   return ok;
 }
@@ -141,5 +144,14 @@ function no (e) {
     addRecord(0);
     reset();  	
   } 
+  e.preventDefault();
+}
+
+function clear (e) {
+  $('input:checked', staffset).prop('checked',false);
+  $('input:checked', wrongset).prop('checked',false);
+  $( "#datefrom" ).val('');
+  $( "#dateto" ).val('');
+  $('input',noset).val('');
   e.preventDefault();
 }
