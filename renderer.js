@@ -55,19 +55,20 @@ document.body.addEventListener('click', function (event) {
 })
 
 function addRecord(yes) {
-  $('#list').append(getLi(yes, getstaff().id, getwrong().id));
+  $('#list').append(getLi(yes, getstaffLabel(), getwrong().id));
   records.push(getRow(yes));  
   saveXLSX( getfilename(), records);
   readFiles(path, readFilesCallback);
 }
 
 function getHead() {
-  return ['报告号','date from','date to','员工','错误类型','评价'];
+  return ['报告号','date from','date to','员工ID','错误类型','评价','员工名称'];
 }
 
 function getRow( yes) {
   var yesStr = yes == 1 ? '满意' : '不满意';
-  return [getNumber(),getfrom(),getto(),getstaff().id,getwrong().id,yesStr];
+  console.log("getstaffLabel",getstaffLabel())
+  return [getNumber(),getfrom(),getto(),getstaff().id,getwrong().id,yesStr, getstaffLabel()];
 }
 
 function getLi(yes, staff, wrong ) {
@@ -103,6 +104,9 @@ function reset (){
 
 function getstaff() {
   return $('input:checked',staffset)[0];
+}
+function getstaffLabel() {
+  return $('#' + getstaff().id + 'Label',staffset).html();
 }
 
 function getfrom() {
